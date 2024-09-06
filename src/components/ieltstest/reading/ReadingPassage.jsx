@@ -1,8 +1,7 @@
 import React from "react";
 import parse from "html-react-parser";
-import "./ReadingModule.css";
 
-const ReadingPassage = ({ section }) => {
+const ReadingPassage = ({ section, fontSize }) => {
   if (!section || !section.passage) {
     return null;
   }
@@ -16,7 +15,6 @@ const ReadingPassage = ({ section }) => {
 
     const parentElement = range.commonAncestorContainer.parentElement;
 
-    // Check if the selection is already highlighted
     if (parentElement && parentElement.className === "highlighted-text") {
       // Remove highlight by replacing the highlighted span with its inner contents
       while (parentElement.firstChild) {
@@ -36,13 +34,30 @@ const ReadingPassage = ({ section }) => {
     selection.removeAllRanges();
   };
 
+  // Inline styles
+  const passageStyles = {
+    //fontSize: 20 || "16px", // Dynamically set font size
+    lineHeight: "1.5",
+    color: "black",
+  };
+
+  const highlightedTextStyles = {
+    backgroundColor: "#b0e0e6", // Highlight color
+  };
+
+  const imageStyles = {
+    width: "100%",
+    height: "auto",
+  };
+
   return (
     <div
-      className="text-black reading-passage "
+      style={{ color: "black" }} // General text color (if needed for other parts)
       onMouseUp={toggleHighlight}
       onTouchEnd={toggleHighlight}
     >
-      {parse(section.passage)}
+      {/* Apply dynamic styles directly to the parsed content */}
+      <div style={passageStyles}>{parse(section.passage)}</div>
     </div>
   );
 };

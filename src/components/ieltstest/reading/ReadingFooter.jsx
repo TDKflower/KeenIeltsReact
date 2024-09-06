@@ -7,6 +7,7 @@ import {
   Stack,
   Container,
   Card,
+  Form,
 } from "react-bootstrap";
 import {
   FiArrowUp,
@@ -18,6 +19,7 @@ import {
 } from "react-icons/fi";
 import CountdownTimer from "../../elements/CountdownTimer";
 import QuestionPallete from "../QuestionPallete";
+import FontSizeSlider from "../FontSizeSlider";
 
 const ReadingFooter = ({
   isExpanded,
@@ -45,7 +47,7 @@ const ReadingFooter = ({
     >
       <Container>
         <Row className="mt-1 pb-1 border-bottom text-black">
-          <Col className="col-4 mt-1">
+          <Col className="col-3 mt-1">
             <div>
               <span style={{ fontSize: "20px" }}>
                 <FiCheckCircle className="" style={{ marginRight: "5px" }} />
@@ -53,14 +55,17 @@ const ReadingFooter = ({
               </span>
             </div>
           </Col>
-          <Col className="col-4 text-center mt-1">
+          <Col className="col-3 text-center mt-1">
             <CountdownTimer
               initialMinutes={60}
               initialSeconds={0}
               handleTimesUp={handleConfirmEndTest}
             />
           </Col>
-          <Col className="col-4" style={{ textAlign: "right" }}>
+          <Col className="col-3 mt-1">
+            {deviceType !== "mobile" && <FontSizeSlider />}
+          </Col>
+          <Col className="col-3" style={{ textAlign: "right" }}>
             {deviceType !== "mobile" && (
               <>
                 <Button
