@@ -2,6 +2,7 @@ import React from "react";
 import { Col, Container, Row, Stack, Button } from "react-bootstrap";
 import CountdownTimer from "../../elements/CountdownTimer";
 import { FiArrowRight, FiCheckCircle, FiArrowLeft } from "react-icons/fi";
+import FontSizeSlider from "../FontSizeSlider";
 
 const WritingFooter = ({
   deviceType,
@@ -34,7 +35,12 @@ const WritingFooter = ({
               handleTimesUp={handleConfirmEndTest}
             />
           </Col>
-          <Col className="col-8 mt-1" style={{ textAlign: "right" }}>
+          {deviceType === "desktop" && (
+            <Col className="col-3 mt-1" style={{ textAlign: "center" }}>
+              <FontSizeSlider />
+            </Col>
+          )}
+          <Col className="col mt-1 mx-auto" style={{ textAlign: "right" }}>
             <Button
               variant="dark"
               className="btn-sm mx-2"
